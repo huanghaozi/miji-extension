@@ -1,0 +1,54 @@
+{
+	"manifest_version": 2,
+	"name": "exMiji",
+	"version": "1.0.0",
+	"description": "秘迹搜索扩展关键词提示",
+	"icons":
+	{
+		"16": "img/icon.png",
+		"48": "img/icon.png",
+		"128": "img/icon.png"
+	},
+	
+	"background":
+	{
+        "scripts": ["js/jquery.min.js","js/background.js"]
+	},
+	
+	"browser_action":
+	{
+		"default_icon": "img/icon.png",
+		"default_title": "秘迹搜索扩展关键词提示",
+		"default_popup": "popup.html"
+	},
+	
+	"content_scripts":
+	[
+		{
+            "matches": ["https://mijisou.com/*","http://mijisou.com/*"],
+			"js": ["js/jquery.min.js", "js/bootstrap-typeahead.js","js/content-scripts.js"],
+            "run_at": "document_end"
+		}
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "permissions":
+    [
+        "notifications",
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "http://suggestion.baidu.com/*",
+        "http://api.bing.com/*",
+        "https://sug.so.360.cn/*",
+        "https://www.sogou.com/*",
+        "https://mijisou.com/*",
+        "http://mijisou.com/*"
+    ],
+    "homepage_url": "https://www.baidu.com",
+    "options_page": "options.html",
+    "options_ui":
+    {
+        "page": "options.html",
+        "chrome_style": true
+    }
+}
